@@ -184,10 +184,10 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
   _buildHeader() {
     return widget.isSearchable
         ? Column(
-            children: <Widget?>[
+            children: <Widget>[
               _buildTitle(),
               _buildSearchField(),
-            ] as List<Widget>,
+            ],
           )
         : _buildTitle();
   }
