@@ -1,9 +1,9 @@
 import 'package:country_pickers/country.dart';
-import 'package:country_pickers/utils/typedefs.dart';
-
 import 'package:country_pickers/utils/my_alert_dialog.dart';
-import 'package:flutter/material.dart';
+import 'package:country_pickers/utils/typedefs.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'countries.dart';
 
 ///Provides a customizable [Dialog] which displays all countries
@@ -121,9 +121,9 @@ class CountryPickerDialog extends StatefulWidget {
 }
 
 class SingleChoiceDialogState extends State<CountryPickerDialog> {
-  late List<Country> _allCountries;
+  List<Country>? _allCountries;
 
-  late List<Country> _filteredCountries;
+  List<Country>? _filteredCountries;
 
   @override
   void initState() {
@@ -131,13 +131,13 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
         countryList.where(widget.itemFilter ?? acceptAllCountries).toList();
 
     if (widget.sortComparator != null) {
-      _allCountries.sort(widget.sortComparator);
+      _allCountries!.sort(widget.sortComparator);
     }
 
     if (widget.priorityList != null) {
-      widget.priorityList!.forEach((Country country) => _allCountries
+      widget.priorityList!.forEach((Country country) => _allCountries!
           .removeWhere((Country c) => country.isoCode == c.isoCode));
-      _allCountries.insertAll(0, widget.priorityList!);
+      _allCountries!.insertAll(0, widget.priorityList!);
     }
 
     _filteredCountries = _allCountries;
@@ -158,10 +158,10 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
   }
 
   _buildContent(BuildContext context) {
-    return _filteredCountries.isNotEmpty
+    return _filteredCountries!.isNotEmpty
         ? ListView(
             shrinkWrap: true,
-            children: _filteredCountries
+            children: _filteredCountries!
                 .map((item) => SimpleDialogOption(
                       child: widget.itemBuilder != null
                           ? widget.itemBuilder!(item)
@@ -184,10 +184,10 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
   _buildHeader() {
     return widget.isSearchable
         ? Column(
-            children: <Widget>[
+            children: <Widget?>[
               _buildTitle(),
               _buildSearchField(),
-            ],
+            ] as List<Widget>,
           )
         : _buildTitle();
   }
@@ -208,7 +208,7 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
           widget.searchInputDecoration ?? InputDecoration(hintText: 'Search'),
       onChanged: (String value) {
         setState(() {
-          _filteredCountries = _allCountries
+          _filteredCountries = _allCountries!
               .where((Country country) => widget.searchFilter == null
                   ? country.name!
                           .toLowerCase()

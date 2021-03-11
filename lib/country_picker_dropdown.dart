@@ -49,7 +49,7 @@ class CountryPickerDropdown extends StatefulWidget {
   final String? initialValue;
 
   ///This function will be called whenever a Country item is selected.
-  final ValueChanged<Country>? onValuePicked;
+  final ValueChanged<Country?>? onValuePicked;
 
   /// Boolean property to enabled/disable expanded property of DropdownButton
   final bool isExpanded;
@@ -100,7 +100,7 @@ class CountryPickerDropdown extends StatefulWidget {
 
 class _CountryPickerDropdownState extends State<CountryPickerDropdown> {
   late List<Country> _countries;
-  late Country _selectedCountry;
+  Country? _selectedCountry;
 
   @override
   void initState() {
@@ -160,7 +160,7 @@ class _CountryPickerDropdownState extends State<CountryPickerDropdown> {
       isExpanded: widget.isExpanded,
       onChanged: (value) {
         setState(() {
-          _selectedCountry = value!;
+          _selectedCountry = value;
           widget.onValuePicked!(value);
         });
       },

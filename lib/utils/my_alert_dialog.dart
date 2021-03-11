@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class MyAlertDialog<T> extends StatelessWidget {
   /// Creates an alert dialog.
@@ -115,7 +115,12 @@ class MyAlertDialog<T> extends StatelessWidget {
         case TargetPlatform.iOS:
           label = semanticLabel;
           break;
+        case TargetPlatform.macOS:
+          label = semanticLabel;
+          break;
         case TargetPlatform.android:
+        case TargetPlatform.windows:
+        case TargetPlatform.linux:
         case TargetPlatform.fuchsia:
         case TargetPlatform.macOS:
         case TargetPlatform.linux:

@@ -51,8 +51,7 @@ class CountryPickerUtils {
   static Country getCountryByPhoneCode(String phoneCode) {
     try {
       return countryList.firstWhere(
-        (country) =>
-            country.phoneCode!.toLowerCase() == phoneCode.toLowerCase(),
+        (country) => country.phoneCode!.toLowerCase() == phoneCode.toLowerCase(),
       );
     } catch (error) {
       throw Exception(
