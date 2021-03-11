@@ -117,6 +117,9 @@ class MyAlertDialog<T> extends StatelessWidget {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.macOS:
+        case TargetPlatform.linux:
+        case TargetPlatform.windows:
           label = semanticLabel ??
               MaterialLocalizations.of(context)?.alertDialogLabel;
       }
