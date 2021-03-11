@@ -169,11 +169,10 @@ class _HomePageState extends State<DemoPage> {
             SizedBox(width: 8.0),
             CountryPickerUtils.getDefaultFlagImage(country),
             SizedBox(width: 8.0),
-            Expanded(child: Text(country.name)),
+            Expanded(child: Text(country.name!)),
           ],
         );
       },
-      itemHeight: null,
       isExpanded: true,
       //initialValue: 'TR',
       icon: Icon(Icons.arrow_downward),
@@ -200,9 +199,6 @@ class _HomePageState extends State<DemoPage> {
             ),*/
             //show'em (the text fields) you're in charge now
             onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-            //if you have menu items of varying size, itemHeight being null respects
-            //that, IntrinsicHeight under the hood ;).
-            itemHeight: null,
             //itemHeight being null and isDense being true doesn't play along
             //well together. One is trying to limit size and other is saying
             //limit is the sky, therefore conflicts.
@@ -230,7 +226,7 @@ class _HomePageState extends State<DemoPage> {
                   ]
                 : null,
             sortComparator: sortedByIsoCode
-                ? (Country a, Country b) => a.isoCode.compareTo(b.isoCode)
+                ? (Country a, Country b) => a.isoCode!.compareTo(b.isoCode!)
                 : null,
             onValuePicked: (Country country) {
               print("${country.name}");
@@ -313,7 +309,7 @@ class _HomePageState extends State<DemoPage> {
           SizedBox(width: 8.0),
           Text("+${country.phoneCode}"),
           SizedBox(width: 8.0),
-          Flexible(child: Text(country.name))
+          Flexible(child: Text(country.name!))
         ],
       );
 
@@ -392,7 +388,7 @@ class _HomePageState extends State<DemoPage> {
         SizedBox(width: 8.0),
         Text("+${country.phoneCode}"),
         SizedBox(width: 8.0),
-        Flexible(child: Text(country.name))
+        Flexible(child: Text(country.name!))
       ],
     );
   }
@@ -410,7 +406,7 @@ class _HomePageState extends State<DemoPage> {
           SizedBox(width: 8.0),
           Text("+${country.phoneCode}"),
           SizedBox(width: 8.0),
-          Flexible(child: Text(country.name))
+          Flexible(child: Text(country.name!))
         ],
       ),
     );
