@@ -115,7 +115,7 @@ class _CupertinoCountryPickerState extends State<CountryPickerCupertino> {
         countryList.where(widget.itemFilter ?? acceptAllCountries).toList();
 
     if (widget.sortComparator != null) {
-      _countries!.sort(widget.sortComparator);
+      _countries.sort(widget.sortComparator);
     }
 
     if (widget.priorityList != null) {
@@ -131,7 +131,7 @@ class _CupertinoCountryPickerState extends State<CountryPickerCupertino> {
           .where((c) => c.phoneCode == this.widget.initialCountry!.phoneCode)
           .first;
       _scrollController = FixedExtentScrollController(
-          initialItem: _countries!.indexOf(countyInList));
+          initialItem: _countries.indexOf(countyInList));
     }
   }
 
@@ -170,7 +170,7 @@ class _CupertinoCountryPickerState extends State<CountryPickerCupertino> {
       offAxisFraction: widget.offAxisFraction,
       useMagnifier: widget.useMagnifier,
       magnification: widget.magnification,
-      children: _countries!
+      children: _countries
           .map<Widget>((Country country) => widget.itemBuilder != null
               ? widget.itemBuilder!(country)
               : _buildDefaultItem(country))

@@ -160,8 +160,8 @@ class _HomePageState extends State<DemoPage> {
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       //if you want your dropdown button's selected item UI to be different
       //than itemBuilder's(dropdown menu item UI), then provide this selectedItemBuilder.
-      onValuePicked: (Country country) {
-        print("${country.name}");
+      onValuePicked: (Country? country) {
+        print("${country!.name}");
       },
       itemBuilder: (Country country) {
         return Row(
@@ -228,8 +228,8 @@ class _HomePageState extends State<DemoPage> {
             sortComparator: sortedByIsoCode
                 ? (Country a, Country b) => a.isoCode!.compareTo(b.isoCode!)
                 : null,
-            onValuePicked: (Country country) {
-              print("${country.name}");
+            onValuePicked: (Country? country) {
+              print("${country!.name}");
             },
           ),
         ),
