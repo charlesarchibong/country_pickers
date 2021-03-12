@@ -61,7 +61,7 @@ class MyAlertDialog<T> extends StatelessWidget {
   /// The (optional) set of actions that are displayed at the bottom of the
   /// dialog.
   ///
-  /// Typically this is a list of [FlatButton] widgets.
+  /// Typically this is a list of [TextButton] widgets.
   ///
   /// These widgets will be wrapped in a [ButtonBar], which introduces 8 pixels
   /// of padding on each side.
@@ -122,6 +122,9 @@ class MyAlertDialog<T> extends StatelessWidget {
         case TargetPlatform.windows:
         case TargetPlatform.linux:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.macOS:
+        case TargetPlatform.linux:
+        case TargetPlatform.windows:
           label = semanticLabel ??
               MaterialLocalizations.of(context).alertDialogLabel;
       }
@@ -141,7 +144,8 @@ class MyAlertDialog<T> extends StatelessWidget {
 
     if (actions != null) {
       if (isDividerEnabled) children.add(divider);
-      children.add(new ButtonTheme(
+      children.add(new ButtonBarTheme(
+        data: ButtonBarThemeData(),
         child: new ButtonBar(
           children: actions!,
         ),

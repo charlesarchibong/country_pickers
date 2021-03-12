@@ -127,7 +127,8 @@ class _CountryPickerDropdownState extends State<CountryPickerDropdown> {
             "The initialValue provided is not a supported iso code!");
       }
     } else {
-      if(widget.isFirstDefaultIfInitialValueNotProvided && _countries.length>0){
+      if (widget.isFirstDefaultIfInitialValueNotProvided &&
+          _countries.length > 0) {
         _selectedCountry = _countries[0];
       }
     }

@@ -33,7 +33,7 @@ class CountryPickerDialog extends StatefulWidget {
 
   /// Padding around the content.
 
-  final EdgeInsetsGeometry contentPadding;
+  final EdgeInsetsGeometry? contentPadding;
 
   /// The semantic label of the dialog used by accessibility frameworks to
   /// announce screen transitions when the dialog is opened and closed.
@@ -149,7 +149,7 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
   Widget build(BuildContext context) {
     return MyAlertDialog(
       title: _buildHeader(),
-      contentPadding: widget.contentPadding,
+      contentPadding: widget.contentPadding!,
       semanticLabel: widget.semanticLabel,
       content: _buildContent(context),
       isDividerEnabled: widget.isDividerEnabled,
@@ -184,10 +184,10 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
   _buildHeader() {
     return widget.isSearchable
         ? Column(
-            children: <Widget?>[
+            children: <Widget>[
               _buildTitle(),
               _buildSearchField(),
-            ] as List<Widget>,
+            ],
           )
         : _buildTitle();
   }

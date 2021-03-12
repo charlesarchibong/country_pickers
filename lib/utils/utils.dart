@@ -9,7 +9,8 @@ class CountryPickerUtils {
         (country) => country.iso3Code!.toLowerCase() == iso3Code.toLowerCase(),
       );
     } catch (error) {
-      throw Exception("The initialValue provided is not a supported iso 3 code!");
+      throw Exception(
+          "The initialValue provided is not a supported iso 3 code!");
     }
   }
 
