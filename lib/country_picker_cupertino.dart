@@ -1,9 +1,10 @@
+import 'dart:core';
+
 import 'package:country_pickers/countries.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/utils/typedefs.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:core';
 
 const double defaultPickerSheetHeight = 216.0;
 const double defaultPickerItemHeight = 32.0;
@@ -127,11 +128,11 @@ class _CupertinoCountryPickerState extends State<CountryPickerCupertino> {
     _scrollController = this.widget.scrollController;
 
     if ((_scrollController == null) && (this.widget.initialCountry != null)) {
-          var countyInList = _countries
+      var countyInList = _countries
           .where((c) => c.phoneCode == this.widget.initialCountry!.phoneCode)
           .first;
       _scrollController = FixedExtentScrollController(
-          initialItem: _countries.indexOf(countryInList));
+          initialItem: _countries.indexOf(countyInList));
     }
   }
 
